@@ -42,23 +42,16 @@ if sexo == "Feminino":
         st.write("Tempo mínimo de contribuição não atingido")
     
 
-
-
-    
-
 else:
     st.write("ok")
 
 if st.button("Calcular"):   
    
-   tempo_para_aposentar = int(idade * tempo ** (1/2))
-   media_salarial = (media_salarial* 0,0) + (media_salarial * 0,2) * tempo
-
-
+   tempo_para_aposentar = idade * (tempo ** (1/2))
    if sexo == "Masculino":
-       tempo_para_aposentar += 10
+       tempo_para_aposentar = (idade + 10) * (tempo ** (1/2))
+   media_salarial = (media_salarial* 0,6) + ((media_salarial * 0,2) * tempo)
 
-   
    
    st.write(f"Prezado(a) {nome}, faltam {tempo_para_aposentar} anos para você se aposentar. O salário da sua aposentadoria é {media_salarial}")
 
