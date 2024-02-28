@@ -63,4 +63,3 @@ if st.button("Calcular"):
    st.write(f"Prezado(a) {nome}, faltam {tempo_para_aposentar} anos para você se aposentar. O salário da sua aposentadoria é {media_salarial}")
 
 
-# alteração
