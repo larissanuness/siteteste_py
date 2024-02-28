@@ -1,4 +1,5 @@
-import streamlit as st 
+import streamlit as st
+
 
 #adc título da página
 st.title("🕖 Simulador de Aposentadoria 📊")
