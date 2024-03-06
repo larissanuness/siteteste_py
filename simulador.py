@@ -1,18 +1,19 @@
 import streamlit as st
 
-
-#adc título da página
 st.title("🕖 Simulador de Aposentadoria 📊")
 
 nome = st.text_input('Nome:', placeholder="Insira seu nome completo.")
-media_salarial = st.text_input('Contribuição Salarial:', placeholder="Insira o valor de contribuição.")
+media_salarial = st.number_input('Contribuição Salarial:', 0, 10000000)
+valor_salarial = int(media_salarial)
+
+porcentagem1 = 0.6
+porcentagem2 = 2/100
+calculo = 0
 
 sexo = st.radio('Sexo:', ["Masculino", "Feminino"])
 
 with st.sidebar:
     st.title('Dados:')
-
-#    sexo = st.radio('Sexo:', ["Masculino", "Feminino"])
 
     idade = st.slider('📆 Minha idade é:', 0, 100, 25)
     
@@ -33,27 +34,18 @@ with st.sidebar:
         else:
             st.write("👩‍🦳")
 
+    tempo_de_contribuicao = st.slider("Tempo de contribuição:", 0,70)
+    tempo = int(tempo_de_contribuicao)
+
+if sexo == "Feminino" and tempo_de_contribuicao >= 15:
+        calculo = valor_salarial * porcentagem1
         
-    tempo = st.slider('Tempo trabalhado:', 0, 70)
+elif sexo == "Masculino" and tempo_de_contribuicao >= 20:
+        calculo = valor_salarial * porcentagem1
 
-tempo_de_contribuicao = st.slider("Insira o tempo de contribuição:", 0,70)
 
-if sexo == "Feminino":
-    if tempo_de_contribuicao <= 29:
-        st.write("Tempo mínimo de contribuição não atingido")
+botao_clicado = st.button("Calcular")
+if botao_clicado:
+    st.write(f"Prezado(a) {nome}, o salário da sua aposentadoria é {calculo:f}")
+
     
-
-else:
-    st.write("ok")
-
-if st.button("Calcular"):   
-   
-   tempo_para_aposentar = idade * (tempo ** (1/2))
-   if sexo == "Masculino":
-       tempo_para_aposentar = (idade + 10) * (tempo ** (1/2))
-   media_salarial = (media_salarial* 0,6) + ((media_salarial * 0,2) * tempo)
-
-   
-   st.write(f"Prezado(a) {nome}, faltam {tempo_para_aposentar} anos para você se aposentar. O salário da sua aposentadoria é {media_salarial}")
-
-
