@@ -68,14 +68,3 @@ if botao_clicado:
     
 
 
-
-
-
-
-
-
-
-
-
-
-
